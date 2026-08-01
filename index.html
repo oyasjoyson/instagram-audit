@@ -503,6 +503,33 @@
             color: var(--g4);
         }
 
+        .dl-group {
+            display: inline-flex;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dl-group .dl-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-soft);
+            font-weight: 600;
+            font-size: 12.5px;
+            padding: 9px 14px;
+            cursor: pointer;
+            transition: color .15s ease, background .15s ease;
+        }
+
+        .dl-group .dl-btn + .dl-btn {
+            border-left: 1px solid var(--border);
+        }
+
+        .dl-group .dl-btn:hover {
+            color: var(--g4);
+            background: var(--border-soft);
+        }
+
         .req-note {
             font-size: 12.5px;
             color: var(--text-soft);
@@ -656,6 +683,66 @@
         .result-list {
             max-height: 280px;
             overflow-y: auto;
+        }
+
+        .list-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 22px;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .lt-search-wrap {
+            position: relative;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .lt-search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 14px;
+            height: 14px;
+            color: var(--text-soft);
+            pointer-events: none;
+        }
+
+        .list-search {
+            width: 100%;
+            padding: 7px 10px 7px 30px;
+            font-size: 13px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+        }
+
+        .list-search:focus {
+            outline: none;
+            border-color: var(--blue);
+        }
+
+        .sort-btn {
+            flex-shrink: 0;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 7px 12px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--text-soft);
+            cursor: pointer;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+
+        .sort-btn:hover {
+            color: var(--g4);
+            border-color: var(--g4);
         }
 
         .result-list .empty {
@@ -868,6 +955,59 @@
             margin-top: 8px;
         }
 
+        .local-history-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            background: var(--border-soft);
+            color: var(--text-soft);
+            margin-bottom: 14px;
+        }
+
+        .local-history-status .lhs-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--text-soft);
+            flex-shrink: 0;
+        }
+
+        .local-history-status.found {
+            background: #e6f9f1;
+            color: #0a7a51;
+        }
+
+        .local-history-status.found .lhs-dot {
+            background: var(--good);
+        }
+
+        html.dark-theme .local-history-status.found {
+            background: #163d2b;
+            color: #6fe3ac;
+        }
+
+        .local-history-status .lhs-clear {
+            margin-left: auto;
+            font-size: 12px;
+            font-weight: 700;
+            color: inherit;
+            text-decoration: underline;
+            cursor: pointer;
+            flex-shrink: 0;
+            background: none;
+            border: none;
+            font-family: inherit;
+            padding: 0;
+            opacity: 0.8;
+        }
+
+        .local-history-status .lhs-clear:hover {
+            opacity: 1;
+        }
+
         footer {
             border-top: 1px solid var(--border-soft);
             padding: 24px 0 40px;
@@ -896,7 +1036,107 @@
             pointer-events: none;
             box-shadow: var(--shadow);
         }
+
+        /* ---------------- Mobile responsiveness ---------------- */
+        @media (max-width:600px) {
+            .wrap, .wrap-narrow {
+                padding: 0 16px;
+            }
+
+            .nav-inner {
+                padding: 0 16px;
+                height: 52px;
+            }
+
+            .brand-mark {
+                width: 38px;
+                height: 38px;
+            }
+
+            .brand-name {
+                font-size: 16px;
+            }
+
+            .theme-toggle-btn {
+                width: 34px;
+                height: 34px;
+            }
+
+            .hero {
+                padding: 40px 0 28px;
+            }
+
+            .hero-icon {
+                width: 110px;
+                height: 110px;
+                margin-bottom: 18px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .hero p.lede {
+                font-size: 14.5px;
+            }
+
+            section {
+                padding: 32px 0;
+            }
+
+            .section-title {
+                font-size: 19px;
+            }
+
+            .analyze-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .analyze-row .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .analyze-row .req-note {
+                text-align: center;
+            }
+
+            .list-toolbar {
+                flex-wrap: wrap;
+                padding: 10px 14px;
+            }
+
+            .sort-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .result-head {
+                padding: 14px 14px;
+            }
+
+            .result-list .u-row,
+            .diff-row {
+                padding: 10px 14px;
+            }
+
+            .local-history-status {
+                flex-wrap: wrap;
+            }
+
+            .local-history-status .lhs-clear {
+                margin-left: 0;
+                width: 100%;
+                text-align: right;
+            }
+
+            .watermark {
+                display: none;
+            }
+        }
     </style>
+
 </head>
 
 <body>
@@ -999,10 +1239,16 @@
             </div>
 
             <div class="compare-block">
-                <div class="cb-title">Compare with a previous check (optional)</div>
-                <div class="cb-sub">Got a snapshot saved from last time? Upload it here to see exactly what's changed
-                    — new unfollows, people who finally followed you back, new fans, and lost followers — instead of
-                    just today's full lists.</div>
+                <div class="cb-title">Compare with a previous check</div>
+                <div class="cb-sub">This browser automatically remembers your last check, so newly-not-following-back
+                    and other changes show up here without doing anything extra. Using a different device, or want to
+                    compare against a specific saved point? Upload a snapshot file below instead.</div>
+                <div class="local-history-status" id="localHistoryStatus">
+                    <span class="lhs-dot"></span>
+                    <span id="localHistoryText">Checking this browser for a previous check…</span>
+                    <button type="button" class="lhs-clear" id="clearHistoryBtn" style="display:none;">Clear saved
+                        history</button>
+                </div>
                 <div class="compare-dz-row">
                     <label class="dropzone compare-dz" id="dz-snapshot" for="file-snapshot">
                         <div class="dz-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1010,20 +1256,21 @@
                                 <path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" />
                             </svg></div>
                         <div class="dz-textwrap">
-                            <div class="dz-label">Previous snapshot <span class="optional-tag">optional</span></div>
+                            <div class="dz-label">Snapshot file <span class="optional-tag">optional</span></div>
                             <div class="dz-sub">audit-snapshot-*.json</div>
                             <div class="dz-file" id="file-snapshot-name"></div>
                         </div>
                         <input type="file" id="file-snapshot" accept=".json">
                     </label>
                 </div>
-                <div class="snapshot-note">Don't have one yet? Run an analysis below, then use "Save snapshot" to
-                    download one for next time.</div>
+                <div class="snapshot-note">Uploading a file here overrides the automatic browser comparison for this
+                    run. Use "Save snapshot" after analyzing to download a portable copy — handy for switching
+                    devices or keeping a permanent record.</div>
             </div>
 
             <div class="analyze-row">
                 <button class="btn" id="analyzeBtn" disabled>Run analysis</button>
-                <button class="btn ghost" id="saveSnapshotBtn" style="display:none;">Save snapshot for next time</button>
+                <button class="btn ghost" id="saveSnapshotBtn" style="display:none;">Download snapshot file</button>
                 <button class="btn ghost" id="resetBtn" style="display:none;">Start over</button>
                 <span class="req-note">Followers + following required · blocked profiles & previous snapshot
                     optional</span>
@@ -1048,7 +1295,22 @@
                             <div class="rh-sub" id="newly-nfb-sub">New since your last snapshot</div>
                         </div>
                     </div>
-                    <button class="btn ghost" data-download="newlyNfb" style="display:none;" id="newly-nfb-download">Download .txt</button>
+                    <div class="dl-group" data-download="newlyNfb" style="display:none;" id="newly-nfb-download">
+                        <button class="dl-btn" data-format="txt">TXT</button>
+                        <button class="dl-btn" data-format="csv">CSV</button>
+                    </div>
+                </div>
+                <div class="list-toolbar">
+                    <div class="lt-search-wrap">
+                        <svg class="lt-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="7" />
+                            <path d="M21 21l-4.3-4.3" />
+                        </svg>
+                        <input type="text" class="list-search" data-target="newlyNfb"
+                            placeholder="Search username…">
+                    </div>
+                    <button type="button" class="sort-btn" data-target="newlyNfb" data-dir="asc">A–Z</button>
                 </div>
                 <div class="result-list" id="newly-nfb-list"></div>
             </div>
@@ -1081,7 +1343,21 @@
                             <div class="rh-sub">You follow them, they don't follow you</div>
                         </div>
                     </div>
-                    <button class="btn ghost" data-download="nfb">Download .txt</button>
+                    <div class="dl-group" data-download="nfb">
+                        <button class="dl-btn" data-format="txt">TXT</button>
+                        <button class="dl-btn" data-format="csv">CSV</button>
+                    </div>
+                </div>
+                <div class="list-toolbar">
+                    <div class="lt-search-wrap">
+                        <svg class="lt-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="7" />
+                            <path d="M21 21l-4.3-4.3" />
+                        </svg>
+                        <input type="text" class="list-search" data-target="nfb" placeholder="Search username…">
+                    </div>
+                    <button type="button" class="sort-btn" data-target="nfb" data-dir="asc">A–Z</button>
                 </div>
                 <div class="result-list" id="nfb-list"></div>
             </div>
@@ -1098,7 +1374,21 @@
                             <div class="rh-sub">They follow you, you don't follow back</div>
                         </div>
                     </div>
-                    <button class="btn ghost" data-download="fans">Download .txt</button>
+                    <div class="dl-group" data-download="fans">
+                        <button class="dl-btn" data-format="txt">TXT</button>
+                        <button class="dl-btn" data-format="csv">CSV</button>
+                    </div>
+                </div>
+                <div class="list-toolbar">
+                    <div class="lt-search-wrap">
+                        <svg class="lt-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="7" />
+                            <path d="M21 21l-4.3-4.3" />
+                        </svg>
+                        <input type="text" class="list-search" data-target="fans" placeholder="Search username…">
+                    </div>
+                    <button type="button" class="sort-btn" data-target="fans" data-dir="asc">A–Z</button>
                 </div>
                 <div class="result-list" id="fans-list"></div>
             </div>
@@ -1116,7 +1406,21 @@
                             <div class="rh-sub">From your blocked_profiles.json</div>
                         </div>
                     </div>
-                    <button class="btn ghost" data-download="blocked">Download .txt</button>
+                    <div class="dl-group" data-download="blocked">
+                        <button class="dl-btn" data-format="txt">TXT</button>
+                        <button class="dl-btn" data-format="csv">CSV</button>
+                    </div>
+                </div>
+                <div class="list-toolbar">
+                    <div class="lt-search-wrap">
+                        <svg class="lt-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="11" cy="11" r="7" />
+                            <path d="M21 21l-4.3-4.3" />
+                        </svg>
+                        <input type="text" class="list-search" data-target="blocked" placeholder="Search username…">
+                    </div>
+                    <button type="button" class="sort-btn" data-target="blocked" data-dir="asc">A–Z</button>
                 </div>
                 <div class="result-list" id="blocked-list"></div>
             </div>
@@ -1223,6 +1527,53 @@
                     r.readAsText(file);
                 });
             }
+
+            // --- Automatic in-browser history (localStorage) --------------------
+            // Nothing here ever leaves the browser: it's the same origin-scoped
+            // localStorage that already stores the theme preference.
+            const LOCAL_SNAPSHOT_KEY = 'igAuditSnapshot_v1';
+
+            function loadLocalSnapshot() {
+                try {
+                    const raw = localStorage.getItem(LOCAL_SNAPSHOT_KEY);
+                    if (!raw) return null;
+                    const parsed = JSON.parse(raw);
+                    if (parsed && Array.isArray(parsed.followersList) && Array.isArray(parsed.followingList)) return parsed;
+                } catch (e) { /* ignore corrupt/unavailable storage */ }
+                return null;
+            }
+
+            function saveLocalSnapshot(snapshot) {
+                try { localStorage.setItem(LOCAL_SNAPSHOT_KEY, JSON.stringify(snapshot)); } catch (e) { /* storage may be full/blocked — safe to skip */ }
+            }
+
+            function clearLocalSnapshot() {
+                try { localStorage.removeItem(LOCAL_SNAPSHOT_KEY); } catch (e) { }
+            }
+
+            const localHistoryStatus = document.getElementById('localHistoryStatus');
+            const localHistoryText = document.getElementById('localHistoryText');
+            const clearHistoryBtn = document.getElementById('clearHistoryBtn');
+
+            function refreshLocalHistoryUI() {
+                const snap = loadLocalSnapshot();
+                if (snap && snap.date) {
+                    localHistoryStatus.classList.add('found');
+                    const d = new Date(snap.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+                    localHistoryText.textContent = 'Found a check from ' + d + ' saved in this browser — new results will compare against it automatically.';
+                    clearHistoryBtn.style.display = 'inline-block';
+                } else {
+                    localHistoryStatus.classList.remove('found');
+                    localHistoryText.textContent = 'No previous check found in this browser yet — run one below, then come back later to see what changed.';
+                    clearHistoryBtn.style.display = 'none';
+                }
+            }
+            refreshLocalHistoryUI();
+
+            clearHistoryBtn.addEventListener('click', () => {
+                clearLocalSnapshot();
+                refreshLocalHistoryUI();
+            });
 
             // --- Robust relationship-array finder -------------------------------
             // Instagram's data-export JSON shape has changed across versions
@@ -1342,45 +1693,63 @@
                     progressEl.lastChild.remove();
                     step('Cross-referencing…ok', true);
 
-                    // ---- Compare against a previous snapshot, if provided ----
+                    // ---- Compare against a previous snapshot ----
+                    // An uploaded file takes priority (explicit intent — e.g.
+                    // comparing against a specific saved point, or using a
+                    // different device). Otherwise fall back to whatever this
+                    // browser remembers from last time.
                     let comparison = null;
+                    let snap = null;
                     if (files.snapshot) {
                         step('Reading previous snapshot…'); await wait(180);
-                        let snap;
                         try {
                             snap = await readFileAsJSON(files.snapshot);
                         } catch (e) {
                             snap = null;
                         }
                         progressEl.lastChild.remove();
-
-                        if (snap && Array.isArray(snap.followersList) && Array.isArray(snap.followingList)) {
-                            step('Comparing to previous snapshot…', true); await wait(120);
-
-                            const oldFollowers = new Set(snap.followersList);
-                            const oldFollowing = new Set(snap.followingList);
-                            const oldNotFollowingBack = new Set([...oldFollowing].filter(u => !oldFollowers.has(u)));
-
-                            const newNotFollowingBack = notFollowingBack.filter(u => !oldNotFollowingBack.has(u)).sort();
-                            const nowFollowingBack = [...oldNotFollowingBack].filter(u => !notFollowingBack.includes(u) && followingSet.has(u) && followerSet.has(u)).sort();
-                            const newFollowersGained = [...followerSet].filter(u => !oldFollowers.has(u)).sort();
-                            const followersLost = [...oldFollowers].filter(u => !followerSet.has(u)).sort();
-                            const newFollowingAdded = [...followingSet].filter(u => !oldFollowing.has(u)).sort();
-                            const followingRemoved = [...oldFollowing].filter(u => !followingSet.has(u)).sort();
-
-                            comparison = {
-                                snapshotDate: snap.date || null,
-                                newNotFollowingBack,
-                                nowFollowingBack,
-                                newFollowersGained,
-                                followersLost,
-                                newFollowingAdded,
-                                followingRemoved
-                            };
-                        } else {
+                        if (!(snap && Array.isArray(snap.followersList) && Array.isArray(snap.followingList))) {
                             step('Snapshot file not recognized — skipping comparison');
+                            snap = null;
                         }
+                    } else {
+                        snap = loadLocalSnapshot();
                     }
+
+                    if (snap) {
+                        step('Comparing to previous snapshot…', true); await wait(120);
+
+                        const oldFollowers = new Set(snap.followersList);
+                        const oldFollowing = new Set(snap.followingList);
+                        const oldNotFollowingBack = new Set([...oldFollowing].filter(u => !oldFollowers.has(u)));
+
+                        const newNotFollowingBack = notFollowingBack.filter(u => !oldNotFollowingBack.has(u)).sort();
+                        const nowFollowingBack = [...oldNotFollowingBack].filter(u => !notFollowingBack.includes(u) && followingSet.has(u) && followerSet.has(u)).sort();
+                        const newFollowersGained = [...followerSet].filter(u => !oldFollowers.has(u)).sort();
+                        const followersLost = [...oldFollowers].filter(u => !followerSet.has(u)).sort();
+                        const newFollowingAdded = [...followingSet].filter(u => !oldFollowing.has(u)).sort();
+                        const followingRemoved = [...oldFollowing].filter(u => !followingSet.has(u)).sort();
+
+                        comparison = {
+                            snapshotDate: snap.date || null,
+                            newNotFollowingBack,
+                            nowFollowingBack,
+                            newFollowersGained,
+                            followersLost,
+                            newFollowingAdded,
+                            followingRemoved
+                        };
+                    }
+
+                    // Always refresh the browser's remembered snapshot with
+                    // today's results, so the *next* run compares against this
+                    // one automatically — regardless of what was used above.
+                    saveLocalSnapshot({
+                        date: new Date().toISOString(),
+                        followersList: [...followerSet].sort(),
+                        followingList: [...followingSet].sort()
+                    });
+                    refreshLocalHistoryUI();
 
                     step('Done — no data left your browser', true);
 
@@ -1407,10 +1776,23 @@
 
             function initials(u) { return u.slice(0, 2).toUpperCase(); }
 
-            function renderList(containerId, arr) {
+            // ---- Search + sort for result lists --------------------------------
+            // Data availability note: Instagram's export only reliably gives us
+            // usernames (no follower counts, verified badges, or timestamps
+            // across all export versions), so "filter/sort" here means
+            // alphabetical A–Z / Z–A plus a live username search.
+            const containerIdMap = { nfb: 'nfb-list', fans: 'fans-list', blocked: 'blocked-list', newlyNfb: 'newly-nfb-list' };
+            const listState = {
+                nfb: { data: [], search: '', dir: 'asc', emptyMessage: 'No accounts here' },
+                fans: { data: [], search: '', dir: 'asc', emptyMessage: 'No accounts here' },
+                blocked: { data: [], search: '', dir: 'asc', emptyMessage: 'No accounts here' },
+                newlyNfb: { data: [], search: '', dir: 'asc', emptyMessage: 'No accounts here' }
+            };
+
+            function renderList(containerId, arr, emptyMessage) {
                 const el = document.getElementById(containerId);
                 el.innerHTML = '';
-                if (!arr.length) { el.innerHTML = '<div class="empty">No accounts here</div>'; return; }
+                if (!arr.length) { el.innerHTML = '<div class="empty">' + (emptyMessage || 'No accounts here') + '</div>'; return; }
                 for (const u of arr) {
                     const row = document.createElement('div');
                     row.className = 'u-row';
@@ -1419,15 +1801,69 @@
                 }
             }
 
+            function renderFilteredList(key) {
+                const state = listState[key];
+                const containerId = containerIdMap[key];
+                if (!state || !containerId) return;
+                let arr = state.data;
+                if (state.search) {
+                    const q = state.search.toLowerCase();
+                    arr = arr.filter(u => u.toLowerCase().includes(q));
+                }
+                arr = arr.slice().sort((a, b) => state.dir === 'asc' ? a.localeCompare(b) : b.localeCompare(a));
+                const emptyMsg = (state.search && state.data.length)
+                    ? 'No usernames match “' + state.search + '”'
+                    : state.emptyMessage;
+                renderList(containerId, arr, emptyMsg);
+            }
+
+            function setListData(key, arr, emptyMessage) {
+                const state = listState[key];
+                if (!state) return;
+                state.data = arr;
+                state.search = '';
+                state.dir = 'asc';
+                state.emptyMessage = emptyMessage || 'No accounts here';
+                const input = document.querySelector('.list-search[data-target="' + key + '"]');
+                if (input) input.value = '';
+                const btn = document.querySelector('.sort-btn[data-target="' + key + '"]');
+                if (btn) { btn.textContent = 'A–Z'; btn.setAttribute('data-dir', 'asc'); }
+                renderFilteredList(key);
+            }
+
+            document.querySelectorAll('.list-search').forEach(input => {
+                input.addEventListener('input', () => {
+                    const key = input.getAttribute('data-target');
+                    if (!listState[key]) return;
+                    listState[key].search = input.value;
+                    renderFilteredList(key);
+                });
+            });
+
+            document.querySelectorAll('.sort-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const key = btn.getAttribute('data-target');
+                    const state = listState[key];
+                    if (!state) return;
+                    state.dir = state.dir === 'asc' ? 'desc' : 'asc';
+                    btn.textContent = state.dir === 'asc' ? 'A–Z' : 'Z–A';
+                    btn.setAttribute('data-dir', state.dir);
+                    renderFilteredList(key);
+                });
+            });
+
             function renderNewlyNFB(comparison) {
                 const card = document.getElementById('newly-nfb-card');
-                const list = document.getElementById('newly-nfb-list');
                 const sub = document.getElementById('newly-nfb-sub');
                 const countEl = document.getElementById('newly-nfb-count');
                 const downloadBtn = document.getElementById('newly-nfb-download');
-                list.innerHTML = '';
 
-                if (!comparison) { card.style.display = 'none'; downloadBtn.style.display = 'none'; return; }
+                if (!comparison) {
+                    card.style.display = 'none';
+                    downloadBtn.style.display = 'none';
+                    setListData('newlyNfb', []);
+                    return;
+                }
 
                 const arr = comparison.newNotFollowingBack || [];
                 card.style.display = 'block';
@@ -1435,19 +1871,9 @@
                     ? 'New since your snapshot from ' + new Date(comparison.snapshotDate).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
                     : 'New since your previous snapshot';
 
-                if (!arr.length) {
-                    list.innerHTML = '<div class="empty">Nobody new — no one has stopped following you back since last time.</div>';
-                    downloadBtn.style.display = 'none';
-                } else {
-                    downloadBtn.style.display = 'inline-block';
-                    for (const u of arr) {
-                        const row = document.createElement('div');
-                        row.className = 'u-row';
-                        row.innerHTML = '<div class="avatar">' + initials(u) + '</div><a href="https://instagram.com/' + encodeURIComponent(u) + '" target="_blank" rel="noopener noreferrer">@' + u + '</a>';
-                        list.appendChild(row);
-                    }
-                }
+                downloadBtn.style.display = arr.length ? 'inline-flex' : 'none';
                 countEl.textContent = '(' + arr.length + ')';
+                setListData('newlyNfb', arr, 'Nobody new — no one has stopped following you back since last time.');
             }
 
             function renderChanges(comparison) {
@@ -1500,14 +1926,14 @@
 
                 document.getElementById('nfb-count').textContent = '(' + r.notFollowingBack.length + ')';
                 document.getElementById('fans-count').textContent = '(' + r.fansOnly.length + ')';
-                renderList('nfb-list', r.notFollowingBack);
-                renderList('fans-list', r.fansOnly);
+                setListData('nfb', r.notFollowingBack, 'Nobody here — everyone you follow also follows you back.');
+                setListData('fans', r.fansOnly, 'Nobody here — everyone who follows you, you follow back too.');
 
                 const blockedCard = document.getElementById('blocked-card');
                 if (files.blocked) {
                     blockedCard.style.display = 'block';
                     document.getElementById('blocked-count').textContent = '(' + r.blocked.length + ')';
-                    renderList('blocked-list', r.blocked);
+                    setListData('blocked', r.blocked, "You haven't blocked anyone.");
                 } else { blockedCard.style.display = 'none'; }
 
                 renderNewlyNFB(r.comparison);
@@ -1516,17 +1942,50 @@
                 document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
 
-            document.querySelectorAll('[data-download]').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    if (!lastResults) return;
+            const downloadLabels = {
+                nfb: 'not-following-back',
+                fans: 'fans-only',
+                blocked: 'blocked-by-you',
+                newlyNfb: 'newly-not-following-back'
+            };
+
+            function csvEscape(field) {
+                const s = String(field);
+                return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+            }
+
+            function buildCsv(key, arr) {
+                const rows = [['username', 'profile_url', 'list']];
+                const label = downloadLabels[key] || key;
+                for (const u of arr) {
+                    rows.push([u, 'https://instagram.com/' + u, label]);
+                }
+                return rows.map(row => row.map(csvEscape).join(',')).join('\n');
+            }
+
+            function triggerDownload(content, filename, mime) {
+                const blob = new Blob([content], { type: mime });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url; a.download = filename;
+                document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            document.querySelectorAll('[data-download]').forEach(group => {
+                group.addEventListener('click', (e) => {
+                    const btn = e.target.closest('[data-format]');
+                    if (!btn || !lastResults) return;
+                    const key = group.getAttribute('data-download');
                     const map = { nfb: lastResults.notFollowingBack, fans: lastResults.fansOnly, blocked: lastResults.blocked, newlyNfb: (lastResults.comparison && lastResults.comparison.newNotFollowingBack) || [] };
-                    const arr = map[btn.getAttribute('data-download')] || [];
-                    const blob = new Blob([arr.join('\n')], { type: 'text/plain' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url; a.download = btn.getAttribute('data-download') + '.txt';
-                    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
+                    const arr = map[key] || [];
+                    const format = btn.getAttribute('data-format');
+                    const filename = downloadLabels[key] || key;
+                    if (format === 'csv') {
+                        triggerDownload(buildCsv(key, arr), filename + '.csv', 'text/csv');
+                    } else {
+                        triggerDownload(arr.join('\n'), filename + '.txt', 'text/plain');
+                    }
                 });
             });
 
